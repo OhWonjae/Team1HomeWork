@@ -36,9 +36,12 @@ public class KimMyungHwi {
 				System.out.println("번호" +space +  "제목" + space+"내용"+space+"글쓴이"+ space+"조회수");
 				System.out.println();
 				for(int i=0;i<boardArray.length;i++) {
+					if(boardArray[i][0]==null)
+						continue;
 					System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
 				}
 			}else if(choiceNum==2) {
+				
 				//번호
 				num--;
 				boardArray[num][0]=""+(boardArray.length-num);
@@ -58,20 +61,25 @@ public class KimMyungHwi {
 				boardArray[num][3]=author;
 
 				//조회수
-				boardArray[num][4]=""+count;
+				boardArray[num][4]="0";
 
 				auto=true;
-			}else if(choiceNum==3) {
-				count++;
+			}
+
+
+			else if(choiceNum==3) {
 				System.out.print("번호 : ");
 				String findNum = scanner.nextLine();
 				int findIntNum = Integer.parseInt(findNum);
 				System.out.println("제목 : "+ boardArray[constNum-findIntNum][1]);
 				System.out.println("내용 : "+ boardArray[constNum-findIntNum][2]);
 				System.out.println("글쓴이 : "+ boardArray[constNum-findIntNum][3]);
-				boardArray[num][4]=""+count;
+				boardArray[constNum-findIntNum][4]=String.valueOf(Integer.parseInt(boardArray[constNum-findIntNum][4])+1);
 				System.out.println("조회수 : "+ boardArray[constNum-findIntNum][4]);
-			}else if(choiceNum==4) {
+			}
+
+
+			else if(choiceNum==4) {
 				System.out.print("번호 : ");
 				String findNum = scanner.nextLine();
 				int findIntNum = Integer.parseInt(findNum);
@@ -90,11 +98,19 @@ public class KimMyungHwi {
 				}else {
 					auto=true;
 				}
-			}else if(choiceNum==6) {
-				  
+			}else if(choiceNum==5) {
+				System.out.print("번호 : ");
+				String removeNum = scanner.nextLine();
+				int removeIntNum = Integer.parseInt(removeNum);
+				for(int i=0; i<5; i++) {
+				boardArray[constNum-removeIntNum][i]=null;
+				}
+				auto=true;
 			}
+
 		}
 	}
 }
+
 
 
