@@ -1,0 +1,10 @@
+package Team1;
+
+public class HomeWork4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
