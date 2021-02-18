@@ -90,7 +90,8 @@ public class KimMyungHwi {
 				}else {
 					auto=true;
 				}
-				
+			}else if(choiceNum==6) {
+				  
 			}
 		}
 	}
