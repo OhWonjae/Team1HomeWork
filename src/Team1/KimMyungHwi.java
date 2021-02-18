@@ -11,7 +11,7 @@ public class KimMyungHwi {
 		boolean auto=false;
 		int constNum =100;
 		int num=100;
-		int count=0;
+		int count=100;
 		int choiceNum;
 		String [][] boardArray = new String[100][5];
 
@@ -40,30 +40,54 @@ public class KimMyungHwi {
 						continue;
 					System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
 				}
+				/*for(int i=1;i<boardArray.length;i++) {
+					if(boardArray[i-1][0]==null)
+						continue;
+					if(Integer.parseInt(boardArray[i-1][0])>(Integer.parseInt(boardArray[i][0]))) {
+
+						System.out.println(boardArray[i-1][0]+space+boardArray[i-1][1]+space+boardArray[i-1][2]+space+boardArray[i-1][3]+space+boardArray[i-1][4]);
+					}else {
+						
+						System.out.println(boardArray[100-i][0]+space+boardArray[100-i][1]+space+boardArray[100-i][2]+space+boardArray[100-i][3]+space+boardArray[100-i][4]);
+					}
+				}*/
 			}else if(choiceNum==2) {
-				
-				//번호
-				num--;
-				boardArray[num][0]=""+(boardArray.length-num);
-				//제목
-				System.out.print("제목 : ");
-				String title = scanner.nextLine();
-				boardArray[num][1]=title;
 
-				//내용
-				System.out.print("내용 : ");
-				String contents = scanner.nextLine();
-				boardArray[num][2]=contents;
 
-				//글쓴이
-				System.out.print("글쓴이 : ");
-				String author = scanner.nextLine();
-				boardArray[num][3]=author;
+				count--;
+				for(int i=boardArray.length-1;i>=0;i--) {
 
-				//조회수
-				boardArray[num][4]="0";
+					if(boardArray[i][0]==null) {
+						//번호
 
-				auto=true;
+						boardArray[i][0]=""+(boardArray.length-count);
+						//제목
+						System.out.print("제목 : ");
+						String title = scanner.nextLine();
+						boardArray[i][1]=title;
+
+						//내용
+						System.out.print("내용 : ");
+						String contents = scanner.nextLine();
+						boardArray[i][2]=contents;
+
+						//글쓴이
+						System.out.print("글쓴이 : ");
+						String author = scanner.nextLine();
+						boardArray[i][3]=author;
+
+						//조회수
+						boardArray[i][4]="0";
+						auto=true;
+						break;
+
+					}else {
+						continue;
+					}
+
+				}
+
+
 			}
 
 
@@ -103,7 +127,7 @@ public class KimMyungHwi {
 				String removeNum = scanner.nextLine();
 				int removeIntNum = Integer.parseInt(removeNum);
 				for(int i=0; i<5; i++) {
-				boardArray[constNum-removeIntNum][i]=null;
+					boardArray[constNum-removeIntNum][i]=null;
 				}
 				auto=true;
 			}
