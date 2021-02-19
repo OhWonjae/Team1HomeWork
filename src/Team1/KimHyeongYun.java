@@ -77,6 +77,7 @@ public class KimHyeongYun {
 	
 						System.out.println(" " + boardArray[i][0] + "       " + boardArray[i][1] + "       " + boardArray[i][2] + "       " + boardArray[i][3] + "           " +  boardArray[i][4] );
 					}
+					 
 					
 					System.out.println();
 					
