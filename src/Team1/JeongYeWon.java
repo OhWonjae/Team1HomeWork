@@ -55,7 +55,7 @@ public class JeongYeWon {
 					}
 				}
 
-
+    
 
 			}
 			else if(menu == 3) { //ÀÐ±â
