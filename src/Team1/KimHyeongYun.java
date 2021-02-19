@@ -64,6 +64,7 @@ public class KimHyeongYun {
 		
 					boardArray[blankIndex][4] = "" + 0;
 		
+					
 					sentenceNum++;} 
 					count++;
 				
