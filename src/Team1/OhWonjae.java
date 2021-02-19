@@ -4,11 +4,19 @@ public class OhWonjae {
 
 	public static void main(String[] args) {
 		boolean run = true;
+		// 전체 게시판 개수
 		int MaxNumber = 100;
+		// 게시물 최상단 인덱스 위치
 		int RecentNumber=100;
+		// 게시물 id
+		int id=1;
+		// 게시물 개수
 		int count=0;
+		// 게시물 Array
 		String[][] boardArray = new String[100][5];
+		// ui 띄어쓰기
 		String space = "          ";
+		// 선택할 인덱스
 		int selectindex=0;
 		Scanner scanner =new Scanner(System.in);
 		String s = null;
@@ -87,10 +95,13 @@ public class OhWonjae {
 							break;
 						}
 					}
+					if(selectindex<RecentNumber)
+					{
+						RecentNumber--;
+					}
 					
 					
-					RecentNumber--;
-					boardArray[selectindex][0] =  ""+(MaxNumber - RecentNumber);
+					boardArray[selectindex][0] =  ""+id;
 					// 제목
 					System.out.print("제목: ");
 					s = scanner.nextLine();
@@ -111,6 +122,8 @@ public class OhWonjae {
 					
 					//카운트 추가
 					count++;
+					//id추가
+					id++;
 				}		
 			
 				break;
@@ -261,6 +274,11 @@ public class OhWonjae {
 							selectindex = i;
 							break;
 						}
+					}
+					// 맨 위에꺼 삭제하면 최상단 넘버도 업데이트
+					if(selectindex==RecentNumber)
+					{
+						RecentNumber++;
 					}
 					// 잘못된 넘버 
 					if(selectindex==-1 ||boardArray[selectindex][0]==null )
