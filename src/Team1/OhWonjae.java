@@ -58,26 +58,7 @@ public class OhWonjae {
 				break;
 
 			case 2:
-				// 목록출력
-				System.out.println("-----------------------------------------------------------------------------");
 				
-				System.out.println("번호" +space +  "제목" + space+"내용"+space+"글쓴이"+ space+"조회");
-
-				System.out.println("-----------------------------------------------------------------------------");
-				//글이 없을때
-				if(count==0)
-				{
-					System.out.println("존재하는 글이 없습니다. 생성해 주세요.");
-				}
-				// 글이 있을때
-				else
-				{
-					for(int i=RecentNumber;i< 100; i++)
-					{
-						System.out.println(boardArray[i][0] +space +boardArray[i][1] + space+boardArray[i][2]+space+boardArray[i][3]+ space+boardArray[i][4]);
-						
-					}
-				}
 				//게시판 꽉 찼으면
 				if(count>=99)
 				{
@@ -136,7 +117,26 @@ public class OhWonjae {
 					//id추가
 					id++;
 				}		
-			
+				// 목록출력
+				System.out.println("-----------------------------------------------------------------------------");
+				
+				System.out.println("번호" +space +  "제목" + space+"내용"+space+"글쓴이"+ space+"조회");
+
+				System.out.println("-----------------------------------------------------------------------------");
+				//글이 없을때
+				if(count==0)
+				{
+					System.out.println("존재하는 글이 없습니다. 생성해 주세요.");
+				}
+				// 글이 있을때
+				else
+				{
+					for(int i=RecentNumber;i< 100; i++)
+					{
+						System.out.println(boardArray[i][0] +space +boardArray[i][1] + space+boardArray[i][2]+space+boardArray[i][3]+ space+boardArray[i][4]);
+						
+					}
+				}
 				break;
 
 			case 3:
@@ -166,9 +166,9 @@ public class OhWonjae {
 					int views = Integer.parseInt(boardArray[selectindex][4]);
 					views++;
 					boardArray[selectindex][4] = ""+views;
-						System.out.println("번호 : " + boardArray[selectindex][1]);
-						System.out.println("제목 : " + boardArray[selectindex][2]);
-						System.out.println("내용 : " + boardArray[selectindex][3]);
+						System.out.println("제목 : " + boardArray[selectindex][1]);
+						System.out.println("내용 : " + boardArray[selectindex][2]);
+						System.out.println("글쓴이 : " + boardArray[selectindex][3]);
 						System.out.println("조회수 : " + boardArray[selectindex][4]);
 				}
 				break;
