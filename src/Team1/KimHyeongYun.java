@@ -83,6 +83,7 @@ public class KimHyeongYun {
 				
 			}else if (selectNo == 3) { // 3. 읽기(Read)
 
+				
 				System.out.print("번호선택> ");
 
 				int choiceNum = Integer.parseInt(scanner.nextLine());
