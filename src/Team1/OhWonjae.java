@@ -95,11 +95,22 @@ public class OhWonjae {
 							break;
 						}
 					}
+					
 					if(selectindex<RecentNumber)
 					{
 						RecentNumber--;
 					}
-					
+					// 삭제된곳에 생성할때
+					else
+					{
+						for(int i = selectindex; i> RecentNumber; i--)
+						{
+							//한칸씩 내리기
+							System.arraycopy(boardArray[i-1], 0, boardArray[i], 0,boardArray[i].length);
+						}
+										
+					}
+					selectindex = RecentNumber;
 					
 					boardArray[selectindex][0] =  ""+id;
 					// 제목
