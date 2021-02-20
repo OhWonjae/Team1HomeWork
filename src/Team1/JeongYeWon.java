@@ -8,7 +8,6 @@ public class JeongYeWon {
 			String[][] boardArray = new String[100][5];
 
 			Scanner scanner = new Scanner(System.in);
-			int menunum = 0; //목록 번호
 			int count=1;
 			int see=0; // 읽을 때 사용하는 번호
 
@@ -31,31 +30,37 @@ public class JeongYeWon {
 					}
 				}
 				else if(menu == 2) { //목록 생성
-					menunum++;
-					System.out.print("제목: ");
-					boardArray[menunum][1]=scanner.nextLine();
-					System.out.print("내용: ");
-					boardArray[menunum][2]=scanner.nextLine();
-					System.out.print("글쓴이: ");
-					boardArray[menunum][3]=scanner.nextLine();
+					
+					for(int j=1; j<boardArray.length;j++) {
+						if(boardArray[j][0]==null) {
+							
+							System.out.print("제목: ");
+							boardArray[j][1]=scanner.nextLine();
+							System.out.print("내용: ");
+							boardArray[j][2]=scanner.nextLine();
+							System.out.print("글쓴이: ");
+							boardArray[j][3]=scanner.nextLine();
+		
+							boardArray[j][0]=String.valueOf(count);
+							count++;
+							boardArray[j][4]="0";
+				
+							System.out.println("---------------------------------------------------------------------------------------------------");
+							System.out.println("번호           제목                    내용                    글쓴이      조회수");
+							System.out.println("---------------------------------------------------------------------------------------------------");
 
-					boardArray[menunum][0]=String.valueOf(count);
-					count++;
-					boardArray[menunum][4]="0";
-
-					System.out.println("---------------------------------------------------------------------------------------------------");
-					System.out.println("번호           제목                    내용                    글쓴이      조회수");
-					System.out.println("---------------------------------------------------------------------------------------------------");
-
-					for(int i=boardArray.length-1;i>=0;i--)  {
-						if(boardArray[i][0]!=null) {
-							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
-						
+							for(int i=boardArray.length-1;i>=0;i--)  {
+								if(boardArray[i][0] != null) {
+									System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
+								}
 							}
+							
+							break;
 						}
-	    
-
+					}
+				
 				}
+				
 				else if(menu == 3) { //읽기
 					System.out.print("번호: ");
 					String s = scanner.nextLine();
