@@ -31,7 +31,7 @@ public class JeongYeWon {
 				}
 				else if(menu == 2) { //목록 생성
 					
-					for(int j=1; j<boardArray.length;j++) { // 삭제했을 경우에 null이 생긴 자리에 집어넣기 위해서 전체 배열을 돌면서 
+					for(int j=0; j<boardArray.length;j++) { // 삭제했을 경우에 null이 생긴 자리에 집어넣기 위해서 전체 배열을 돌면서 
 						if(boardArray[j][0]==null) { // null이 있는 곳을 찾아서 입력된 값을 넣음.
 							
 							System.out.print("제목: ");
@@ -66,6 +66,8 @@ public class JeongYeWon {
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
+					--see; //인덱스 = 목록번호-1
+					
 					//조회수 증가
 
 					int view =	Integer.parseInt(boardArray[see][4]);
@@ -86,6 +88,8 @@ public class JeongYeWon {
 					System.out.print("번호: ");
 					String s = scanner.nextLine(); //번호를 입력받음
 					see = Integer.parseInt(s); //String으로 입력받았기에 int값으로 변경
+					
+					--see;
 					
 					String preTitle = boardArray[see][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
 					String preContent = boardArray[see][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
@@ -124,6 +128,11 @@ public class JeongYeWon {
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
+					--see;
+					
+					for(int x=0; x<boardArray.length;x++) {
+						
+					}
 					for(int j=0;j<5;j++) {
 						boardArray[see][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
 
@@ -134,7 +143,7 @@ public class JeongYeWon {
 						}
 					}
 				}
-				else if( menu == 6) { //종료
+				else  { //종료
 					run = false; // while문 빠져나오게 boolean변수를 false로 바꿈.
 				}
 			}
