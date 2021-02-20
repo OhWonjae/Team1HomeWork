@@ -65,29 +65,38 @@ public class JeongYeWon {
 					System.out.print("번호: ");
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
-
-					for(int x=0; x<boardArray.length;x++) { 
-						if(boardArray[x][0]!=null){ //null값일 때 제외 (예외처리)
-						int del = Integer.parseInt(boardArray[x][0]); // 목록번호를 int형으로 전환
-						if(del == see) { //만약 입력한 목록번호와 항목이 일치한다면
-							see = x; //인덱스번호 저장
-							break; 
-							}
-						}
-					}
 					
-					//조회수 증가
+					
+					for(int x=0; x<boardArray.length;x++) { 
+						if(boardArray[x][0]==null){
+							System.out.println("없는 번호입니다.");
+							break;
+						} 
+						else if(boardArray[x][0]!=null){ //null값일 때 제외 (예외처리)
+						
+							int del = Integer.parseInt(boardArray[x][0]); // 목록번호를 int형으로 전환
+							if(del == see) { //만약 입력한 목록번호와 항목이 일치한다면
+								see = x; //인덱스번호 저장
+								
+							//조회수 증가
 
-					int view =	Integer.parseInt(boardArray[see][4]);
-					view ++;
-					boardArray[see][4] = String.valueOf(view);
+							int view =	Integer.parseInt(boardArray[see][4]);
+							view ++;
+							boardArray[see][4] = String.valueOf(view);
 
 
 
-					System.out.println("제목: "+boardArray[see][1]);
-					System.out.println("내용: "+boardArray[see][2]);
-					System.out.println("글쓴이: "+boardArray[see][3]);		
-					System.out.println("조회수: "+boardArray[see][4]);
+							System.out.println("제목: "+boardArray[see][1]);
+							System.out.println("내용: "+boardArray[see][2]);
+							System.out.println("글쓴이: "+boardArray[see][3]);		
+							System.out.println("조회수: "+boardArray[see][4]);
+							
+							break;
+							
+								}
+							} 
+						}
+					
 
 				}
 
@@ -97,46 +106,55 @@ public class JeongYeWon {
 					String s = scanner.nextLine(); //번호를 입력받음
 					see = Integer.parseInt(s); //String으로 입력받았기에 int값으로 변경
 					
-					for(int x=0; x<boardArray.length;x++) {
-						if(boardArray[x][0]!=null){
-						int del = Integer.parseInt(boardArray[x][0]);
-						if(del == see) {
-							see = x;
-							break;
+					for(int x=0; x<boardArray.length;x++) { 
+						
+						if(boardArray[x][0]==null){
+							System.out.println("없는 번호입니다.");
+							break; } 
+					
+						else if(boardArray[x][0]!=null){
+							
+							int del = Integer.parseInt(boardArray[x][0]);
+							if(del == see) {
+								see = x;
+
+							String preTitle = boardArray[see][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
+							String preContent = boardArray[see][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
+
+							System.out.println("기존 제목: "+boardArray[see][1]);
+							System.out.print("수정 제목: ");
+							String title = scanner.nextLine();
+								if(title.equals("")) { //만약에 엔터값 들어오면
+									boardArray[see][1] = preTitle; //원래 제목을 그대로 집어넣음
 								}
+								else {
+									boardArray[see][1] = title; //엔터값이 아니라면 새로 입력받은 값을 배열에 넣음
+								}
+
+							System.out.println("기존 내용: "+boardArray[see][2]);
+							System.out.print("수정 내용: ");
+							String content = scanner.nextLine();
+							
+								if(content.equals("")) {
+									boardArray[see][2] = preContent;
+								}
+								else {
+									boardArray[see][2] = content;
+								}
+
+
+							for(int i=boardArray.length-1;i>=0;i--)  {
+								if(boardArray[i][0]!=null) {
+									System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
+										}
+									}
+								break;
+								}
+					
 							}
+						
 						}
-					
-					String preTitle = boardArray[see][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
-					String preContent = boardArray[see][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
 
-					System.out.println("기존 제목: "+boardArray[see][1]);
-					System.out.print("수정 제목: ");
-					String title = scanner.nextLine();
-					if(title.equals("")) { //만약에 엔터값 들어오면
-						boardArray[see][1] = preTitle; //원래 제목을 그대로 집어넣음
-					}
-					else {
-						boardArray[see][1] = title; //엔터값이 아니라면 새로 입력받은 값을 배열에 넣음
-					}
-
-					System.out.println("기존 내용: "+boardArray[see][2]);
-					System.out.print("수정 내용: ");
-					String content = scanner.nextLine();
-					
-					if(content.equals("")) {
-						boardArray[see][2] = preContent;
-					}
-					else {
-						boardArray[see][2] = content;
-					}
-
-
-					for(int i=boardArray.length-1;i>=0;i--)  {
-						if(boardArray[i][0]!=null) {
-							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
-						}
-					}
 
 				}
 				else if( menu == 5) { //삭제
@@ -145,34 +163,43 @@ public class JeongYeWon {
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
-					for(int x=0; x<boardArray.length;x++) {
+					for(int x=0; x<boardArray.length;x++) { 
 						
-						if(boardArray[x][0]!=null){
-						
+						if(boardArray[x][0]==null){
+							System.out.println("없는 번호입니다.");
+							break; } 
+					
+						else if(boardArray[x][0]!=null){
+							
 						int del = Integer.parseInt(boardArray[x][0]);
 						
 						if(del == see) {
 							see = x;
+							
+							for(int j=0;j<5;j++) {
+								
+								boardArray[see][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
+							}
+				
+								
+							
+							for(int i=boardArray.length-1;i>=0;i--) { //출력문
+								if(boardArray[i][0]!=null) {
+									System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
+									}
+								}
 							break;
 							}
 						}
 		
 					}
-					for(int j=0;j<5;j++) {
-						
-						boardArray[see][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
-					}
-		
-						
-					
-					for(int i=boardArray.length-1;i>=0;i--) { //출력문
-						if(boardArray[i][0]!=null) {
-							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
-						}
-					}
+
 				}
 				else if(menu == 6){ //종료
 					run = false; // while문 빠져나오게 boolean변수를 false로 바꿈.
+				}
+				else {
+					System.out.println("메뉴를 다시 선택하세요.");
 				}
 			}
 			System.out.println("프로그램 종료");
