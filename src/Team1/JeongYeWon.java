@@ -66,12 +66,12 @@ public class JeongYeWon {
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
-					for(int x=0; x<boardArray.length;x++) {
-						if(boardArray[x][0]!=null){
-						int del = Integer.parseInt(boardArray[x][0]);
-						if(del == see) {
-							see = x;
-							break;
+					for(int x=0; x<boardArray.length;x++) { 
+						if(boardArray[x][0]!=null){ //null값일 때 제외 (예외처리)
+						int del = Integer.parseInt(boardArray[x][0]); // 목록번호를 int형으로 전환
+						if(del == see) { //만약 입력한 목록번호와 항목이 일치한다면
+							see = x; //인덱스번호 저장
+							break; 
 							}
 						}
 					}
@@ -170,7 +170,6 @@ public class JeongYeWon {
 							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
 						}
 					}
-					see = 0;
 				}
 				else if(menu == 6){ //종료
 					run = false; // while문 빠져나오게 boolean변수를 false로 바꿈.
@@ -179,3 +178,4 @@ public class JeongYeWon {
 			System.out.println("프로그램 종료");
 		}
 	}
+
