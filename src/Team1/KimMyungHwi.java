@@ -43,7 +43,7 @@ public class KimMyungHwi {
 					if(boardArray[i][0]==null)
 						continue;
 					System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
-				} 
+				}
 				/*for(int i=100-test-1;i>=0;i--) {
 					if(boardArray[i][0]==null) {
 						continue;
