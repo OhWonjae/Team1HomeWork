@@ -10,7 +10,7 @@ public class JeongYeWon {
 			Scanner scanner = new Scanner(System.in);
 			int count=1; // 목록에 번호를 카운트 해주기 위한 변수 
 			int see=0; // 사용자가 입력하는 번호를 읽을 때 사용 할 변수
-
+			
 			while(run) {
 				System.out.println("----------------------------------------------------------------------------------------------");
 				System.out.println("1.	목록 | 2. 생성(Create) | 3. 읽기(Read) | 4. 수정(Update) | 5.삭제(Delete) | 6.종료");
@@ -66,7 +66,15 @@ public class JeongYeWon {
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
-					--see; //인덱스 = 목록번호-1
+					for(int x=0; x<boardArray.length;x++) {
+						if(boardArray[x][0]!=null){
+						int del = Integer.parseInt(boardArray[x][0]);
+						if(del == see) {
+							see = x;
+							break;
+							}
+						}
+					}
 					
 					//조회수 증가
 
@@ -89,7 +97,15 @@ public class JeongYeWon {
 					String s = scanner.nextLine(); //번호를 입력받음
 					see = Integer.parseInt(s); //String으로 입력받았기에 int값으로 변경
 					
-					--see;
+					for(int x=0; x<boardArray.length;x++) {
+						if(boardArray[x][0]!=null){
+						int del = Integer.parseInt(boardArray[x][0]);
+						if(del == see) {
+							see = x;
+							break;
+								}
+							}
+						}
 					
 					String preTitle = boardArray[see][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
 					String preContent = boardArray[see][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
@@ -124,26 +140,39 @@ public class JeongYeWon {
 
 				}
 				else if( menu == 5) { //삭제
+					
 					System.out.print("번호: ");
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
 
-					--see;
-					
 					for(int x=0; x<boardArray.length;x++) {
 						
+						if(boardArray[x][0]!=null){
+						
+						int del = Integer.parseInt(boardArray[x][0]);
+						
+						if(del == see) {
+							see = x;
+							break;
+							}
+						}
+		
 					}
 					for(int j=0;j<5;j++) {
+						
 						boardArray[see][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
-
 					}
-					for(int i=boardArray.length-1;i>=0;i--) {
+		
+						
+					
+					for(int i=boardArray.length-1;i>=0;i--) { //출력문
 						if(boardArray[i][0]!=null) {
 							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
 						}
 					}
+					see = 0;
 				}
-				else  { //종료
+				else if(menu == 6){ //종료
 					run = false; // while문 빠져나오게 boolean변수를 false로 바꿈.
 				}
 			}
