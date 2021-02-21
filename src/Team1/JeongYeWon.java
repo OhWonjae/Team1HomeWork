@@ -61,63 +61,67 @@ public class JeongYeWon {
 				
 				}
 				
-				else if(menu == 3) { //읽기
+				else if(menu == 3) {//읽기 ..........ㅅ살려줘.....ㅠ또르륵,,,,,,,,,,
 					System.out.print("번호: ");
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
-					
+					int del = -1;
 					
 					for(int x=0; x<boardArray.length;x++) { 
-						if(boardArray[x][0]==null){
-							System.out.println("없는 번호입니다.");
-							break;
-						} 
-						else if(boardArray[x][0]!=null){ //null값일 때 제외 (예외처리)
-						
-							int del = Integer.parseInt(boardArray[x][0]); // 목록번호를 int형으로 전환
+
+						if(boardArray[x][0]!=null) { //null값일 때 제외 (예외처리)
+							 del = Integer.parseInt(boardArray[x][0]); // 목록번호를 int형으로 전환
 							if(del == see) { //만약 입력한 목록번호와 항목이 일치한다면
 								see = x; //인덱스번호 저장
-								
-							//조회수 증가
-
-							int view =	Integer.parseInt(boardArray[see][4]);
-							view ++;
-							boardArray[see][4] = String.valueOf(view);
-
-
-
-							System.out.println("제목: "+boardArray[see][1]);
-							System.out.println("내용: "+boardArray[see][2]);
-							System.out.println("글쓴이: "+boardArray[see][3]);		
-							System.out.println("조회수: "+boardArray[see][4]);
-							
-							break;
-							
 								}
-							} 
-						}
+							}
+					}
 					
+					if(del == -1){
+						System.out.println("없는 번호입니다.");
+						break;
+					} 
+					
+					//조회수 증가
+					else {
+						int view =	Integer.parseInt(boardArray[see][4]);
+						view ++;
+						boardArray[see][4] = String.valueOf(view);
+	
+	
+	
+						System.out.println("제목: "+boardArray[see][1]);
+						System.out.println("내용: "+boardArray[see][2]);
+						System.out.println("글쓴이: "+boardArray[see][3]);		
+						System.out.println("조회수: "+boardArray[see][4]);
+						 }
 
-				}
-
+			}
+		
+				
 				else if( menu == 4) { //수정
 					
 					System.out.print("번호: ");
 					String s = scanner.nextLine(); //번호를 입력받음
 					see = Integer.parseInt(s); //String으로 입력받았기에 int값으로 변경
+					int del = -1;
 					
 					for(int x=0; x<boardArray.length;x++) { 
-						
-						if(boardArray[x][0]==null){
-							System.out.println("없는 번호입니다.");
-							break; } 
-					
-						else if(boardArray[x][0]!=null){
-							
-							int del = Integer.parseInt(boardArray[x][0]);
+							if(boardArray[x][0]!=null){
+								del = Integer.parseInt(boardArray[x][0]);
 							if(del == see) {
 								see = x;
 
+								}
+							}
+					}
+					
+					if(del == -1) {
+						System.out.println("없는 번호입니다.");
+						break;
+					}
+					
+					else {		
 							String preTitle = boardArray[see][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
 							String preContent = boardArray[see][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
 
@@ -148,35 +152,34 @@ public class JeongYeWon {
 									System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
 										}
 									}
-								break;
 								}
 					
 							}
 						
-						}
 
 
-				}
 				else if( menu == 5) { //삭제
 					
 					System.out.print("번호: ");
 					String s = scanner.nextLine();
 					see = Integer.parseInt(s);
-
-					for(int x=0; x<boardArray.length;x++) { 
-						
-						if(boardArray[x][0]==null){
-							System.out.println("없는 번호입니다.");
-							break; } 
+					int del = -1;
 					
-						else if(boardArray[x][0]!=null){
-							
-						int del = Integer.parseInt(boardArray[x][0]);
-						
+					for(int x=0; x<boardArray.length;x++) { 
+						if(boardArray[x][0]!=null){
+							del = Integer.parseInt(boardArray[x][0]);
 						if(del == see) {
-							see = x;
-							
-							for(int j=0;j<5;j++) {
+							see = x;}
+						}
+					}
+					
+					if(del == -1) {
+						System.out.println("없는 번호입니다.");
+						break;
+					}
+					
+					else {
+						for(int j=0;j<5;j++) {
 								
 								boardArray[see][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
 							}
@@ -188,13 +191,12 @@ public class JeongYeWon {
 									System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
 									}
 								}
-							break;
-							}
-						}
-		
+							
+							}	
+						
 					}
 
-				}
+				
 				else if(menu == 6){ //종료
 					run = false; // while문 빠져나오게 boolean변수를 false로 바꿈.
 				}
