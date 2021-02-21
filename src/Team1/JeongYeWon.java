@@ -8,9 +8,10 @@ public class JeongYeWon {
 		String[][] boardArray = new String[100][5]; 
 
 		Scanner scanner = new Scanner(System.in);
-		int count=1; // 목록에 번호를 카운트 해주기 위한 변수 
-		int see=0; // 사용자가 입력하는 번호를 읽을 때 사용 할 변수
+		int count=1; // 목록에 번호를 카운트 해주기 위한 변수
+		
 
+		
 		while(run) {
 			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("1.	목록 | 2. 생성(Create) | 3. 읽기(Read) | 4. 수정(Update) | 5.삭제(Delete) | 6.종료");
@@ -64,33 +65,34 @@ public class JeongYeWon {
 			else if(menu == 3) {//읽기
 				System.out.print("번호: ");
 				String s = scanner.nextLine(); //읽고자 하는 번호 입력받기
-				see = Integer.parseInt(s); //int형으로 전환
-				int del = -1; 
 
+				int readNum = -1; 
+	
 				for(int x=0; x<boardArray.length;x++) { //배열을 한바퀴 돌면서
 
 					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)) { //null값일 때 제외 (예외처리) + 내가 입력한 번호와 목록이 일치하면
-						del =x;	//입력한 번호와 일치한 인덱스 넘버를 del에 넣어주기
+						readNum =x;	//입력한 번호와 일치한 인덱스 넘버를 readNum에 넣어주기
 					}
 				}
+				
 
 
-				if(del == -1){ // null값인 경우엔 del=-1
+				if(readNum == -1){ // null값인 경우엔 readNum=-1
 					System.out.println("없는 번호입니다.");
 				} 
 
 				//조회수 증가
 				else {
-					int view =	Integer.parseInt(boardArray[del][4]);	//내가 읽고싶은 목록번호가 del에 저장됐으니 이를 이용해서 조회수 증가
+					int view =	Integer.parseInt(boardArray[readNum][4]);	//내가 읽고싶은 목록번호가 del에 저장됐으니 이를 이용해서 조회수 증가
 					view ++;
-					boardArray[del][4] = String.valueOf(view);
+					boardArray[readNum][4] = String.valueOf(view);
 
 
 
-					System.out.println("제목: "+boardArray[del][1]);
-					System.out.println("내용: "+boardArray[del][2]);
-					System.out.println("글쓴이: "+boardArray[del][3]);		
-					System.out.println("조회수: "+boardArray[del][4]);
+					System.out.println("제목: "+boardArray[readNum][1]);
+					System.out.println("내용: "+boardArray[readNum][2]);
+					System.out.println("글쓴이: "+boardArray[readNum][3]);		
+					System.out.println("조회수: "+boardArray[readNum][4]);
 				}
 
 			}
@@ -100,42 +102,41 @@ public class JeongYeWon {
 
 				System.out.print("번호: ");
 				String s = scanner.nextLine(); //번호를 입력받음
-				see = Integer.parseInt(s); //String으로 입력받았기에 int값으로 변경
-				int del = -1;
+				int fixNum = -1;
 
 				for(int x=0; x<boardArray.length;x++) { 
 					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)){
-						del = x;
+						fixNum = x;
 					}
 				}
 
-				if(del == -1) { // 입력한 번호가 없는 경우 = null값이 들어있는 경우
+				if(fixNum == -1) { // 입력한 번호가 없는 경우 = null값이 들어있는 경우
 					System.out.println("없는 번호입니다.");
 				}
 
 				else {		
-					String preTitle = boardArray[del][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
-					String preContent = boardArray[del][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
+					String preTitle = boardArray[fixNum][1]; // 수정하기 전 제목 preTitle이라는 변수에 넣어둠.
+					String preContent = boardArray[fixNum][2]; // 수정하기 전 내용 preConten라는 변수에 넣어둠.
 
-					System.out.println("기존 제목: "+boardArray[del][1]);
+					System.out.println("기존 제목: "+boardArray[fixNum][1]);
 					System.out.print("수정 제목: ");
 					String title = scanner.nextLine();
 					if(title.equals("")) { //만약에 엔터값 들어오면
-						boardArray[del][1] = preTitle; //원래 제목을 그대로 집어넣음
+						boardArray[fixNum][1] = preTitle; //원래 제목을 그대로 집어넣음
 					}
 					else {
-						boardArray[del][1] = title; //엔터값이 아니라면 새로 입력받은 값을 배열에 넣음
+						boardArray[fixNum][1] = title; //엔터값이 아니라면 새로 입력받은 값을 배열에 넣음
 					}
 
-					System.out.println("기존 내용: "+boardArray[del][2]);
+					System.out.println("기존 내용: "+boardArray[fixNum][2]);
 					System.out.print("수정 내용: ");
 					String content = scanner.nextLine();
 
 					if(content.equals("")) {
-						boardArray[del][2] = preContent;
+						boardArray[fixNum][2] = preContent;
 					}
 					else {
-						boardArray[del][2] = content;
+						boardArray[fixNum][2] = content;
 					}
 
 
@@ -154,23 +155,22 @@ public class JeongYeWon {
 
 				System.out.print("번호: ");
 				String s = scanner.nextLine();
-				see = Integer.parseInt(s);
-				int del = -1;
+				int deleteNum = -1;
 
 				for(int x=0; x<boardArray.length;x++) { 
 					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)){
-						del =x;
+						deleteNum =x;
 					}
 				}
 
-				if(del == -1) {
+				if(deleteNum == -1) {
 					System.out.println("없는 번호입니다.");
 				}
 
 				else {
 					for(int j=0;j<5;j++) {
 
-						boardArray[del][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
+						boardArray[deleteNum][j] = null; // 입력받은 번호의 열을 for문을 통해 다 돌면서 null값 넣어줌.
 					}
 
 
