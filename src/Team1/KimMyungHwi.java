@@ -168,7 +168,7 @@ public class KimMyungHwi {
 				System.out.print("¹øÈ£ : ");
 				String removeNum = scanner.nextLine();
 				int removeIntNum = Integer.parseInt(removeNum);
-				saveRemoveNum=removeIntNum;
+				//saveRemoveNum=removeIntNum;
 				//removeArray[removeCount]=saveRemoveNum;
 				//removeCount++;
 
