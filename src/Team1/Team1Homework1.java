@@ -1,6 +1,6 @@
 package Team1;
 import java.util.Scanner;
-public class JeongYeWon {
+public class Team1Homework1 {
 
 	public static void main(String[] args) {
 
