@@ -9,15 +9,15 @@ public class KimMyungHwi {
 		String space = " ";
 		boolean run =true;
 		boolean auto=false;
-		//int test=100;
+		int test=100;
 		int count=100;
 		int choiceNum;
-		//boolean flag=false;
-		//int removeCount=0;
+		boolean flag=false;
+		int removeCount=0;
 		int saveRemoveNum=0;
 		String [][] boardArray = new String[100][5];
-		//int [] removeArray = new int[100];
- 
+		int [] removeArray = new int[100];
+
 		Scanner scanner = new Scanner(System.in);
 
 		while(run) {
@@ -34,32 +34,39 @@ public class KimMyungHwi {
 			}
 			//목록
 			if(choiceNum==1) {
-				/*int num=boardArray.length-count;*/
+				int num=boardArray.length-count;
 				System.out.println("--------------------------");
 				System.out.println();
 				System.out.println("번호" +space +  "제목" + space+"내용"+space+"글쓴이"+ space+"조회수");
 				System.out.println();
-				for(int i=boardArray.length-1;i>=0;i--) {
+				/*for(int i=boardArray.length-1;i>=0;i--) {
 					if(boardArray[i][0]==null)
 						continue;
 					System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
-				}
-				/*for(int i=100-test-1;i>=0;i--) {
-					if(boardArray[i][0]==null) {
+				}*/
+				for(int i=100-test-1;i>=0;i--) {
+					if(boardArray[i][0]==null||saveRemoveNum==num) {
+							for(int j =0;j<removeCount;j++) {
+								if(removeArray[j]==num) {
+									num--;
+								
+							}			
+
+						}
 						continue;
 
 					}else if(boardArray[i][0].equals(String.valueOf(num))) {
 						System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
 						num--;
 						i=100-test;
-					}else if(saveRemoveNum==num||boardArray[i][0]==null){
+					}/*else if(saveRemoveNum==num||boardArray[i][0]==null){
 						for(int j =0;j<removeCount;j++) {
 							if(removeArray[j]==num) {
 								num--;
 							}
 						}
 
-					}
+					}*/
 					else if(i==(boardArray.length-1)&&num!=boardArray.length) {
 						i=100-test;
 						num--;
@@ -67,16 +74,16 @@ public class KimMyungHwi {
 						break;
 					}		
 
-				}*/
+				}
 
 
 			}else if(choiceNum==2) {
 
 				count--;
-				//test--;
-				/*if(flag) {
+				test--;
+				if(flag) {
 					test++;
-				/}*/
+				}
 
 				for(int i=0;i<=boardArray.length;i++) {
 
@@ -110,7 +117,7 @@ public class KimMyungHwi {
 
 				}
 
-				//flag=false;
+				flag=false;
 			}
 
 
@@ -172,8 +179,8 @@ public class KimMyungHwi {
 				String removeNum = scanner.nextLine();
 				int removeIntNum = Integer.parseInt(removeNum);
 				saveRemoveNum=removeIntNum;
-				//removeArray[removeCount]=saveRemoveNum;
-				//removeCount++;
+				removeArray[removeCount]=saveRemoveNum;
+				removeCount++;
 
 				int removeIndex=-1;
 				for(int i=0; i<boardArray.length;i++) {
@@ -189,7 +196,7 @@ public class KimMyungHwi {
 						boardArray[removeIndex][i]=null;
 					}
 					auto=true;
-					//flag=true;
+					flag=true;
 				}
 			}
 			else if(choiceNum ==6) {
