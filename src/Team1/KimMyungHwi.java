@@ -46,10 +46,10 @@ public class KimMyungHwi {
 				}*/
 				for(int i=100-test-1;i>=0;i--) {
 					if(boardArray[i][0]==null||saveRemoveNum==num) {
-							for(int j =0;j<removeCount;j++) {
-								if(removeArray[j]==num) {
-									num--;
-								
+						for(int j =0;j<removeCount;j++) {
+							if(removeArray[j]==num) {
+								num--;
+
 							}			
 
 						}
@@ -59,20 +59,16 @@ public class KimMyungHwi {
 						System.out.println(boardArray[i][0]+space+boardArray[i][1]+space+boardArray[i][2]+space+boardArray[i][3]+space+boardArray[i][4]);
 						num--;
 						i=100-test;
-					}/*else if(saveRemoveNum==num||boardArray[i][0]==null){
-						for(int j =0;j<removeCount;j++) {
-							if(removeArray[j]==num) {
-								num--;
-							}
-						}
-
-					}*/
+					}else if(num!=0&&i==0){
+						i=100-test;
+						
+					}
 					else if(i==(boardArray.length-1)&&num!=boardArray.length) {
 						i=100-test;
 						num--;
 					}else if(num==boardArray.length+1) {
 						break;
-					}		
+					}	
 
 				}
 
