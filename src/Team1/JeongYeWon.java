@@ -61,31 +61,27 @@ public class JeongYeWon {
 
 			}
 
-			else if(menu == 3) {//읽기 ..........ㅅ살려줘.....ㅠ또르륵,,,,,,,,,,
+			else if(menu == 3) {//읽기
 				System.out.print("번호: ");
-				String s = scanner.nextLine();
-				see = Integer.parseInt(s);
-				int del = -1;
+				String s = scanner.nextLine(); //읽고자 하는 번호 입력받기
+				see = Integer.parseInt(s); //int형으로 전환
+				int del = -1; 
 
-				for(int x=0; x<boardArray.length;x++) { 
+				for(int x=0; x<boardArray.length;x++) { //배열을 한바퀴 돌면서
 
-					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)) { //null값일 때 제외 (예외처리)	//여기서 내가 입력한 번호값이랑 맞는지 확인같이 해줬어.  배열이 돌다가 이 조건식에 맞는 배열값이 나오면 지금 그 인덳스를 del에 추가해준거야 
-						del =x;	//x값이 for문으로 돌면서 위 조건식에서 맞으면 나올테니깐 그 x값을 del에 넣어준거야
-					}// 목록번호를 int형으로 전환
-					/*if(del == see) { //만약 입력한 목록번호와 항목이 일치한다면
-								see = x; //인덱스번호 저장
-								}*/
+					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)) { //null값일 때 제외 (예외처리) + 내가 입력한 번호와 목록이 일치하면
+						del =x;	//입력한 번호와 일치한 인덱스 넘버를 del에 넣어주기
+					}
 				}
 
 
-				if(del == -1){
+				if(del == -1){ // null값인 경우엔 del=-1
 					System.out.println("없는 번호입니다.");
-					break;
 				} 
 
 				//조회수 증가
 				else {
-					int view =	Integer.parseInt(boardArray[del][4]);	//del값이 이제 내가 필요한 인덱스니깐 아까 너가 넣어둔 see대신에 del값으로 인덱스를 다 바꿔준거야
+					int view =	Integer.parseInt(boardArray[del][4]);	//내가 읽고싶은 목록번호가 del에 저장됐으니 이를 이용해서 조회수 증가
 					view ++;
 					boardArray[del][4] = String.valueOf(view);
 
@@ -113,7 +109,7 @@ public class JeongYeWon {
 					}
 				}
 
-				if(del == -1) {
+				if(del == -1) { // 입력한 번호가 없는 경우 = null값이 들어있는 경우
 					System.out.println("없는 번호입니다.");
 				}
 
