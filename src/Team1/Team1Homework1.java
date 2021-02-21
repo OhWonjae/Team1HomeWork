@@ -9,6 +9,7 @@ public class Team1Homework1 {
 
 		Scanner scanner = new Scanner(System.in);
 		int count=1; // 목록에 번호를 카운트 해주기 위한 변수
+		int max=100; //저장할 수 있는 최대 개수
 		
 
 		
@@ -36,7 +37,7 @@ public class Team1Homework1 {
 					if(boardArray[j][0]==null) { // null이 있는 곳을 찾아서 입력된 값을 넣음.
 
 						System.out.print("제목: ");
-						boardArray[j][1]=scanner.nextLine();
+						boardArray[j][1]=scanner.nextLine(); 
 						System.out.print("내용: ");
 						boardArray[j][2]=scanner.nextLine();
 						System.out.print("글쓴이: ");
@@ -50,13 +51,13 @@ public class Team1Homework1 {
 						System.out.println("번호           제목                    내용                    글쓴이      조회수");
 						System.out.println("---------------------------------------------------------------------------------------------------");
 
-						for(int i=boardArray.length-1;i>=0;i--)  {
+						for(int i=boardArray.length-1;i>=0;i--)  { //배열을 거꾸로 돌면서 내림차순으로 목록 출력
 							if(boardArray[i][0] != null) {
 								System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
 							}
 						}
 
-						break; // 값을 집어 넣었으면 for문 빠져나옴.
+						break; // 값을 집어 넣었으면 출력하고 for문 빠져나옴.
 					}
 				}
 
@@ -81,14 +82,14 @@ public class Team1Homework1 {
 					System.out.println("없는 번호입니다.");
 				} 
 
-				//조회수 증가
-				else {
+		
+				else {			//null값이 아니라면 조회수 증가
 					int view =	Integer.parseInt(boardArray[readNum][4]);	//내가 읽고싶은 목록번호가 del에 저장됐으니 이를 이용해서 조회수 증가
 					view ++;
 					boardArray[readNum][4] = String.valueOf(view);
 
 
-
+					//출력문
 					System.out.println("제목: "+boardArray[readNum][1]);
 					System.out.println("내용: "+boardArray[readNum][2]);
 					System.out.println("글쓴이: "+boardArray[readNum][3]);		
@@ -101,12 +102,12 @@ public class Team1Homework1 {
 			else if( menu == 4) { //수정
 
 				System.out.print("번호: ");
-				String s = scanner.nextLine(); //번호를 입력받음
+				String s = scanner.nextLine(); //수정하고자 하는 목록 번호를 입력받음
 				int fixNum = -1;
 
-				for(int x=0; x<boardArray.length;x++) { 
-					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)){
-						fixNum = x;
+				for(int x=0; x<boardArray.length;x++) {  //배열을 돌면서
+					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)){ //null이 아니고 입력한 목록번호와 일치하는 인덱스 찾기
+						fixNum = x; //인덱스 번호 findNum에 저장
 					}
 				}
 
@@ -139,7 +140,7 @@ public class Team1Homework1 {
 						boardArray[fixNum][2] = content;
 					}
 
-
+					//출력문
 					for(int i=boardArray.length-1;i>=0;i--)  {
 						if(boardArray[i][0]!=null) {
 							System.out.println(boardArray[i][0]+"            "+boardArray[i][1]+"                  "+boardArray[i][2]+"                    "+boardArray[i][3]+"       "+boardArray[i][4]);
@@ -154,12 +155,12 @@ public class Team1Homework1 {
 			else if( menu == 5) { //삭제
 
 				System.out.print("번호: ");
-				String s = scanner.nextLine();
+				String s = scanner.nextLine(); //삭제할 번호 입력받음
 				int deleteNum = -1;
 
 				for(int x=0; x<boardArray.length;x++) { 
 					if(boardArray[x][0]!=null&&boardArray[x][0].equals(s)){
-						deleteNum =x;
+						deleteNum =x; //삭제할번호와 일치하는 인덱스 번호를 deleteNum에 저장
 					}
 				}
 
